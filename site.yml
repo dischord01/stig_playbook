@@ -1,0 +1,8 @@
+# file: site.yml
+---
+- name: Install & Configure 
+  remote_user: vagrant
+  hosts: all
+  become: yes
+  roles:
+  - { role: STIG-RHEL6 }
