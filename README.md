@@ -38,22 +38,42 @@ In Tower when you launch the Job Template add the following skip tags to disable
 V-38476,V-38481,V-38496,V-38483,V-38489,V-38519,V-51363
 ```
 
+## DoD Warning Banner Issue: Fix
+
+Add the following to `tasks/cat2.yml`. This uses the same include tags and will be executed to add the DoD warning banner. 
+
+```
+- name: V-38615 SSH daemon must be configured with the Department of Defense (DoD) login banner.
+  lineinfile: >
+    state={{ item.st }}
+    backup=yes dest="/etc/ssh/ssh_config"
+    regexp={{ item.rx }}
+    line={{ item.ln }}
+  with_items:
+    - { st: 'present', rx: "'^#?Banner'", ln: "        Banner /etc/issue" }
+  tags: [ 'cat2' , 'V-38615' , 'V-38484' , 'ssh' , 'logon_settings' , 'dod_logon_banner' ]
+  notify: restart ssh
+```
 
 
+#### Here is more detail on the exact tasks you are skipping.
 
-Here is more detail on the exact tasks you are skipping.
+```
+CAT 1 Skip Tags
 
-# CAT 1 Skip Tags
 V-38476
+```
 
-# CAT 2 Skip Tags
+```
+CAT 2 Skip Tags
+
 V-38481
 V-38496
 V-38483
 V-38489
 V-38519
 V-51363
-
+```
 
 ---------------
 
