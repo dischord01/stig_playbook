@@ -55,6 +55,7 @@ Add the following to `tasks/cat2.yml`. This uses the same include tags and will 
   notify: restart ssh
 ```
 
+---------------
 
 #### Here is more detail on the exact tasks you are skipping.
 
@@ -74,8 +75,6 @@ V-38489
 V-38519
 V-51363
 ```
-
----------------
 
 ## CAT 1
 
